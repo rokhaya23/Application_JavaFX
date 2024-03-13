@@ -1,10 +1,23 @@
 package com.example.examenfx.Model;
 
+import java.sql.Date;
+
 public class Produit {
     private int id;
+    private String nom_produit;
     private int libelle_quantite;
     private int prix_unitaire;
-    private String idCategory;
+    private int idCategory;
+    private Date date;
+
+
+    public String getNom_produit() {
+        return nom_produit;
+    }
+
+    public void setNom_produit(String nom_produit) {
+        this.nom_produit = nom_produit;
+    }
 
     public int getId() {
         return id;
@@ -30,21 +43,31 @@ public class Produit {
         this.prix_unitaire = prix_unitaire;
     }
 
-    public String getIdCategory() {
+    public int getIdCategory() {
         return idCategory;
     }
 
-    public void setIdCategory(String idCategory) {
+    public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Produit() {
     }
 
-    public Produit(int libelle_quantite, int prix_unitaire, String idCategory) {
+    public Produit(String nom_produit ,int libelle_quantite, int prix_unitaire, int idCategory, Date date) {
         this.libelle_quantite = libelle_quantite;
         this.prix_unitaire = prix_unitaire;
         this.idCategory = idCategory;
+        this.nom_produit = nom_produit;
+        this.date = date;
     }
 
     @Override
@@ -54,6 +77,8 @@ public class Produit {
                 ", libelle_quantite=" + libelle_quantite +
                 ", prix_unitaire=" + prix_unitaire +
                 ", idCategory=" + idCategory +
+                ", nom_produit=" + nom_produit +
+
                 '}';
     }
 }

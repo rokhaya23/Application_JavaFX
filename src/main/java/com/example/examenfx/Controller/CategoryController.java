@@ -38,6 +38,11 @@ public class CategoryController implements Initializable {
     }
     @FXML
     void addCategory(ActionEvent event) {
+        // Vérifiez si les champs sont vides
+        if (tlibelle.getText().isEmpty() ) {
+            showAlert("Veuillez remplir tous les champs.");
+            return;
+        }
         Category category = new Category(tlibelle.getText());
 
         categoryRepository.add(category);
@@ -100,9 +105,9 @@ public class CategoryController implements Initializable {
 
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
