@@ -1,4 +1,7 @@
-package com.example.examenfx.Model;
+package com.example.examenfx.Repository;
+
+import com.example.examenfx.Model.BD;
+import com.example.examenfx.Model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

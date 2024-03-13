@@ -1,5 +1,7 @@
-package com.example.examenfx.Model;
+package com.example.examenfx.Controller;
 
+import com.example.examenfx.Model.User;
+import com.example.examenfx.Repository.UserRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
 
     @FXML
     private TextField id;
@@ -42,6 +44,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     void SignIn(ActionEvent event) throws IOException {
+
         Parent signin = FXMLLoader.load(getClass().getResource("/com/example/examenfx/hello-view.fxml"));
 
         // Créer une nouvelle scène

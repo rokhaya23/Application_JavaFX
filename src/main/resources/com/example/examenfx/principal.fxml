@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane prefHeight="622.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.examenfx.Model.PrincipalController">
+<AnchorPane prefHeight="622.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.examenfx.Controller.PrincipalController">
    <children>
-      <VBox prefHeight="622.0" prefWidth="200.0" style="-fx-background-color: indigo;">
+      <Pane layoutX="-4.0" prefHeight="633.0" prefWidth="229.0" style="-fx-background-color: indigo;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="215.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="204.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="201.0" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="208.0" text="Button" />
+            <Button alignment="TOP_LEFT" layoutX="31.0" layoutY="355.0" mnemonicParsing="false" onAction="#extraire_document" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Extraire Document" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="265.0" mnemonicParsing="false" onAction="#category" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Categorie" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="310.0" mnemonicParsing="false" onAction="#produit" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Produit" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="31.0" layoutY="220.0" mnemonicParsing="false" onAction="#statistique" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Statistique" textAlignment="CENTER" />
          </children>
-      </VBox>
+      </Pane>
+      <Pane fx:id="paneP" layoutX="225.0" prefHeight="633.0" prefWidth="554.0">
+         <children>
+            <Pane prefHeight="64.0" prefWidth="548.0" style="-fx-background-color: indigo;">
+               <children>
+                  <TextField fx:id="messageFx" layoutX="144.0" layoutY="20.0" prefHeight="25.0" prefWidth="275.0" style="-fx-background-color: indigo;" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

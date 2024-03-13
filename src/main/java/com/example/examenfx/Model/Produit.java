@@ -4,7 +4,7 @@ public class Produit {
     private int id;
     private int libelle_quantite;
     private int prix_unitaire;
-    private int idCategory;
+    private String idCategory;
 
     public int getId() {
         return id;
@@ -30,18 +30,18 @@ public class Produit {
         this.prix_unitaire = prix_unitaire;
     }
 
-    public int getIdCategory() {
+    public String getIdCategory() {
         return idCategory;
     }
 
-    public void setIdCategory(int idCategory) {
+    public void setIdCategory(String idCategory) {
         this.idCategory = idCategory;
     }
 
     public Produit() {
     }
 
-    public Produit(int libelle_quantite, int prix_unitaire, int idCategory) {
+    public Produit(int libelle_quantite, int prix_unitaire, String idCategory) {
         this.libelle_quantite = libelle_quantite;
         this.prix_unitaire = prix_unitaire;
         this.idCategory = idCategory;

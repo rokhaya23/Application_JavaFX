@@ -6,4 +6,6 @@ module com.example.examenfx {
     opens com.example.examenfx to javafx.fxml;
     exports com.example.examenfx;
     opens com.example.examenfx.Model;
+    opens com.example.examenfx.Controller;
+    opens com.example.examenfx.Repository;
 }
