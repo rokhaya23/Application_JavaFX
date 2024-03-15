@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategoryRepository {
-    private static Connection connection;
+    private Connection connection;
 
     public  CategoryRepository(){
         this.connection = new BD().getConnection();
@@ -57,7 +57,7 @@ public class CategoryRepository {
 
 
 
-    public static ObservableList<Category> getAll() {
+    public  ObservableList<Category> getAll() {
         ObservableList<Category> list = FXCollections.observableArrayList();
         try {
 

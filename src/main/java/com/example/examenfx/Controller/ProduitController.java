@@ -56,6 +56,18 @@ public class ProduitController implements Initializable {
 
     @FXML
     private TableColumn<Produit, Integer> cprix_unitaire;
+
+    @FXML
+    void btnEXCEL(ActionEvent event) {
+        ObservableList<Produit> productList = tableFx.getItems();
+        ProduitRepository.exportToExcel(productList);
+    }
+
+    @FXML
+    void btnPDF(ActionEvent event) {
+        ObservableList<Produit> productList = tableFx.getItems();
+        ProduitRepository.exportToPDF(productList);
+    }
     @FXML
     void addProduit(ActionEvent event) {
         // Vérifiez si les champs sont vides

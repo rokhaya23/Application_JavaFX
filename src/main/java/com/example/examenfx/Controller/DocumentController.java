@@ -1,19 +1,15 @@
 package com.example.examenfx.Controller;
 
-import javafx.event.ActionEvent;
+import com.example.examenfx.Model.Produit;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 
 public class DocumentController {
     private DocumentController documentController;
 
     @FXML
-    void btnEXCEL(ActionEvent event) {
+    private TableView<Produit> tableFx;
 
-    }
 
-    @FXML
-    void btnPDF(ActionEvent event) {
-
-    }
 
 }

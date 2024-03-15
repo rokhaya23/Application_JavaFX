@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="541.0" prefWidth="585.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.examenfx.Controller.ProduitController">
+<AnchorPane prefHeight="577.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.examenfx.Controller.ProduitController">
    <children>
       <Button layoutX="192.0" layoutY="199.0" mnemonicParsing="false" onAction="#updateProduit" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: indigo; -fx-text-fill: white; -fx-background-radius: 20;" text="Modifier" />
       <Button layoutX="86.0" layoutY="199.0" mnemonicParsing="false" onAction="#addProduit" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: indigo; -fx-text-fill: white; -fx-background-radius: 20;" text="Ajouter" />
@@ -34,5 +34,7 @@
       <Button layoutX="525.0" layoutY="142.0" mnemonicParsing="false" onAction="#clearChamps" text="clear" visible="false" />
       <Label layoutX="9.0" layoutY="48.0" text="Nom Poduit" />
       <TextField fx:id="tnom_produit" layoutX="80.0" layoutY="44.0" />
+      <Button layoutX="146.0" layoutY="538.0" mnemonicParsing="false" onAction="#btnEXCEL" style="-fx-background-color: green; -fx-text-fill: white;" text="Extraire Excel" />
+      <Button layoutX="287.0" layoutY="538.0" mnemonicParsing="false" onAction="#btnPDF" style="-fx-background-color: red; -fx-text-fill: white;" text="Extraire PDF" />
    </children>
 </AnchorPane>

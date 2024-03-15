@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRepository {
-    private static Connection connection;
+    private  Connection connection;
 
     public  UserRepository(){
         this.connection = new BD().getConnection();
     }
 
-    public static boolean saveUser(User user) {
+    public  boolean saveUser(User user) {
         try {
             String sql = "INSERT INTO user (nom, prenom, email, password, telephone, login) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

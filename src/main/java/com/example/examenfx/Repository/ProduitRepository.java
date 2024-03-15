@@ -3,15 +3,20 @@ package com.example.examenfx.Repository;
 import com.example.examenfx.Model.BD;
 import com.example.examenfx.Model.Category;
 import com.example.examenfx.Model.Produit;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 
 public class ProduitRepository {
-    private static Connection connection;
+    private  Connection connection;
 
     public  ProduitRepository(){
         this.connection = new BD().getConnection();
@@ -73,7 +78,7 @@ public class ProduitRepository {
 
 
 
-    public static ObservableList<Produit> getAll() {
+    public  ObservableList<Produit> getAll() {
         ObservableList<Produit> list = FXCollections.observableArrayList();
         try {
 
@@ -145,6 +150,53 @@ public class ProduitRepository {
             e.printStackTrace();
         }
         return categoryId;
+    }
+
+    public static void exportToPDF(ObservableList<Produit> productList) {
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream("products.pdf"));
+            document.open();
+            document.add(new Paragraph("Liste des Produits"));
+
+            for (Produit produit : productList) {
+                document.add(new Paragraph(produit.toString()));
+            }
+
+            document.close();
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void exportToExcel(ObservableList<Produit> productList) {
+//        Workbook workbook = new XSSFWorkbook();
+//        Sheet sheet = workbook.createSheet("Liste des Produits");
+//        Row headerRow = sheet.createRow(0);
+//        headerRow.createCell(0).setCellValue("ID");
+//        headerRow.createCell(1).setCellValue("Nom");
+//        headerRow.createCell(2).setCellValue("Quantité");
+//        headerRow.createCell(3).setCellValue("Prix unitaire");
+//        headerRow.createCell(4).setCellValue("Catégorie");
+//
+//        int rowNum = 1;
+//        for (Produit produit : productList) {
+//            Row row = sheet.createRow(rowNum++);
+//            row.createCell(0).setCellValue(produit.getId());
+//            row.createCell(1).setCellValue(produit.getNom_produit());
+//            row.createCell(2).setCellValue(produit.getLibelle_quantite());
+//            row.createCell(3).setCellValue(produit.getPrix_unitaire());
+//            row.createCell(4).setCellValue(produit.getIdCategory());
+//        }
+//
+//        try {
+//            FileOutputStream fileOut = new FileOutputStream("products.xlsx");
+//            workbook.write(fileOut);
+//            fileOut.close();
+//            workbook.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }

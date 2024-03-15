@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class StatistiqueRepository {
 
-    private static Connection connection;
+    private  Connection connection;
 
     public StatistiqueRepository() {
         this.connection = new BD().getConnection();
