@@ -9,10 +9,10 @@
    <children>
       <Pane layoutX="-4.0" prefHeight="633.0" prefWidth="229.0" style="-fx-background-color: indigo;">
          <children>
-            <Button alignment="TOP_LEFT" layoutX="31.0" layoutY="355.0" mnemonicParsing="false" onAction="#extraire_document" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Extraire Document" textAlignment="CENTER" />
-            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="265.0" mnemonicParsing="false" onAction="#category" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Categorie" textAlignment="CENTER" />
-            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="310.0" mnemonicParsing="false" onAction="#produit" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Produit" textAlignment="CENTER" />
-            <Button alignment="TOP_LEFT" layoutX="31.0" layoutY="220.0" mnemonicParsing="false" onAction="#statistique" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Statistique" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="31.0" layoutY="587.0" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Se Déconnecter" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="252.0" mnemonicParsing="false" onAction="#category" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Categorie" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="32.0" layoutY="297.0" mnemonicParsing="false" onAction="#produit" prefHeight="45.0" prefWidth="188.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Produit" textAlignment="CENTER" />
+            <Button alignment="TOP_LEFT" layoutX="31.0" layoutY="207.0" mnemonicParsing="false" onAction="#statistique" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: indigo; -fx-text-fill: white;" text="Statistique" textAlignment="CENTER" />
          </children>
       </Pane>
       <Pane fx:id="paneP" layoutX="225.0" prefHeight="633.0" prefWidth="554.0">

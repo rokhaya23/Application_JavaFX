@@ -13,16 +13,18 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.sql.Date;
+import java.sql.*;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProduitController implements Initializable {
     private ProduitRepository produitRepository;
 
+
     @FXML
-    private TableColumn<Produit, Integer> ccategory;
+    private TableColumn<Produit, String> ccategory;
 
     @FXML
     private TableColumn<Produit, Integer> cid;
@@ -58,15 +60,18 @@ public class ProduitController implements Initializable {
     private TableColumn<Produit, Integer> cprix_unitaire;
 
     @FXML
-    void btnEXCEL(ActionEvent event) {
-        ObservableList<Produit> productList = tableFx.getItems();
-        ProduitRepository.exportToExcel(productList);
+    void btnEXCEL(ActionEvent event) throws SQLException {
+        Map<String, Integer> productCountByCategory = produitRepository.getProductCountByCategory();
+
+        // Ensuite, vous appelez la méthode pour exporter vers Excel
+        produitRepository.exportToExcel(productCountByCategory);
     }
+
 
     @FXML
     void btnPDF(ActionEvent event) {
         ObservableList<Produit> productList = tableFx.getItems();
-        ProduitRepository.exportToPDF(productList);
+        produitRepository.exportToPDF(productList);
     }
     @FXML
     void addProduit(ActionEvent event) {
@@ -90,7 +95,8 @@ public class ProduitController implements Initializable {
         Produit produit = new Produit(tnom_produit.getText(),
                 Integer.parseInt(tquantite.getText()),
                 Integer.parseInt(tprix_unitaire.getText()),
-                categoryId, Date.valueOf(currentDate));
+                categoryId, Date.valueOf(currentDate),
+                selectedCategoryName); // Passer le nom de la catégorie
 
         // Ajoutez le produit à la base de données
         produitRepository.add(produit);
@@ -99,6 +105,7 @@ public class ProduitController implements Initializable {
         clearChamps(event);
         affiche();
     }
+
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -159,13 +166,16 @@ public class ProduitController implements Initializable {
 
         Produit produit = new Produit(tnom_produit.getText(),Integer.parseInt(tquantite.getText()),
                 Integer.parseInt(tprix_unitaire.getText()),
-                selectedCategoryId,Date.valueOf(currentDate));
+                selectedCategoryId,Date.valueOf(currentDate),
+                categoryName); // Passer le nom de la catégorie
+
         produit.setId(Integer.parseInt(id.getText()));
 
         produitRepository.update(produit);
         this.clearChamps(event);
         this.affiche();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.produitRepository = new ProduitRepository();
@@ -188,15 +198,22 @@ public class ProduitController implements Initializable {
 
     void affiche(){
         ObservableList<Produit> list = produitRepository.getAll();
+
+        // Parcourir la liste des produits et mettre à jour le nom de la catégorie
+        for (Produit produit : list) {
+            String categoryName = produitRepository.getCategoryNameById(produit.getIdCategory());
+            produit.setCategory(categoryName);
+        }
+
         cid.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id"));
         cnom_produit.setCellValueFactory(new PropertyValueFactory<Produit, String>("nom_produit"));
         cquantite.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("libelle_quantite"));
         cprix_unitaire.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("prix_unitaire"));
-        ccategory.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("idCategory"));
+        ccategory.setCellValueFactory(new PropertyValueFactory<Produit, String>("category"));
 
         tableFx.setItems(list);
-
     }
+
     @FXML
     void onSearch(KeyEvent event) {
         String keyword = search.getText().trim();

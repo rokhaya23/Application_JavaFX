@@ -79,22 +79,22 @@ public class CategoryRepository {
         return list;
     }
 
-    public Category getById(int id) {
-        Category category = null;
-        try {
-            String sql = "SELECT * FROM category WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
-
-            if (result.next()) {
-                category = new Category();
-                category.setId(result.getInt("id"));
-                category.setLibelle(result.getString("libelle"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return category;
-    }
+//    public Category getById(int id) {
+//        Category category = null;
+//        try {
+//            String sql = "SELECT * FROM category WHERE id = ?";
+//            PreparedStatement statement = connection.prepareStatement(sql);
+//            statement.setInt(1, id);
+//            ResultSet result = statement.executeQuery();
+//
+//            if (result.next()) {
+//                category = new Category();
+//                category.setId(result.getInt("id"));
+//                category.setLibelle(result.getString("libelle"));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return category;
+//    }
 }

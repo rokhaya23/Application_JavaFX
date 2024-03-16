@@ -9,7 +9,14 @@ public class Produit {
     private int prix_unitaire;
     private int idCategory;
     private Date date;
+    private String category ;
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public String getNom_produit() {
         return nom_produit;
@@ -62,12 +69,13 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(String nom_produit ,int libelle_quantite, int prix_unitaire, int idCategory, Date date) {
+    public Produit(String nom_produit ,int libelle_quantite, int prix_unitaire, int idCategory, Date date, String category) {
         this.libelle_quantite = libelle_quantite;
         this.prix_unitaire = prix_unitaire;
         this.idCategory = idCategory;
         this.nom_produit = nom_produit;
         this.date = date;
+        this.category = category;
     }
 
     @Override
