@@ -1,5 +1,6 @@
 package com.example.examenfx;
 
+import com.example.examenfx.Controller.PrincipalController;
 import com.example.examenfx.Model.User;
 import com.example.examenfx.Repository.UserRepository;
 import javafx.event.ActionEvent;
@@ -39,16 +40,20 @@ public class HelloController implements Initializable {
             return;
         }
 
-        // Appeler votre méthode de vérification de l'utilisateur (à adapter)
+        // Appeler votre méthode de vérification de l'utilisateur
         boolean isValidUser = isUserValid(login, password);
 
         if (isValidUser) {
             System.out.println("Connexion réussie!");
 
-                // Charger la scène de la page principale depuis le fichier FXML
-                Parent mainPage = FXMLLoader.load(getClass().getResource("/com/example/examenfx/principal.fxml"));
+            // Charger la scène de la page principale depuis le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/examenfx/principal.fxml"));
+            Parent mainPage = loader.load();
 
-                // Créer une nouvelle scène
+            PrincipalController principalController = loader.getController();
+            principalController.setLogin(login);
+
+            // Créer une nouvelle scène
                 Scene scene = new Scene(mainPage);
 
                 // Obtenir la scène actuelle à partir de l'événement

@@ -202,13 +202,13 @@ public class ProduitRepository {
                 table.addCell(createCell(String.valueOf(produit.getPrix_unitaire()), normalFont));
                 table.addCell(createCell(String.valueOf(produit.getLibelle_quantite()), normalFont));
                 String categoryName = getCategoryNameById(produit.getIdCategory());
-                table.addCell(createCell(categoryName, normalFont)); // Ajouter le nom de la catégorie au lieu de l'ID
+                table.addCell(createCell(categoryName, normalFont));
             }
 
             document.add(table);
             document.close();
 
-            // Ouvrir le fichier PDF avec le programme par défaut
+            // Ouvrir le fichier PDF
             if (Desktop.isDesktopSupported()) {
                 Desktop.getDesktop().open(file);
             } else {
@@ -241,8 +241,8 @@ public class ProduitRepository {
             // Ajouter les données dans le tableau Excel
             for (Map.Entry<String, Integer> entry : productCountByCategory.entrySet()) {
                 Row row = sheet.createRow(rowCount++);
-                String categoryName = getCategoryNameById(Integer.parseInt(entry.getKey())); // Obtenir le nom de la catégorie
-                row.createCell(0).setCellValue(categoryName); // Nom de la catégorie
+                String categoryName = getCategoryNameById(Integer.parseInt(entry.getKey()));
+                row.createCell(0).setCellValue(categoryName);
                 row.createCell(1).setCellValue(entry.getValue());
             }
 

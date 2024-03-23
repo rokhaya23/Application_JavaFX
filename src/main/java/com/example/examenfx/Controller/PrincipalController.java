@@ -3,25 +3,30 @@ package com.example.examenfx.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class PrincipalController {
 
     @FXML
-    private TextField messageFx;
+    private Label messageFx;
 
     @FXML
     private Pane paneP;
+    private String login;
 
     @FXML
     void logout(ActionEvent event) throws IOException {
@@ -61,5 +66,10 @@ public class PrincipalController {
         Parent fxml = FXMLLoader.load(getClass().getResource("/com/example/examenfx/statistique.fxml"));
         paneP.getChildren().removeAll();
         paneP.getChildren().setAll(fxml);
+    }
+
+        public void setLogin(String login) {
+            this.login = login;
+            messageFx.setText("Bienvenue, " + login);
     }
 }

@@ -167,7 +167,7 @@ public class ProduitController implements Initializable {
         Produit produit = new Produit(tnom_produit.getText(),Integer.parseInt(tquantite.getText()),
                 Integer.parseInt(tprix_unitaire.getText()),
                 selectedCategoryId,Date.valueOf(currentDate),
-                categoryName); // Passer le nom de la catégorie
+                categoryName);
 
         produit.setId(Integer.parseInt(id.getText()));
 
@@ -203,6 +203,12 @@ public class ProduitController implements Initializable {
         for (Produit produit : list) {
             String categoryName = produitRepository.getCategoryNameById(produit.getIdCategory());
             produit.setCategory(categoryName);
+
+            // Vérifier le stock du produit
+            if (produit.getLibelle_quantite() <= 5) {
+                // Afficher une alerte si le stock est inférieur ou égal à 5
+                showAlertProduit("Le produit '" + produit.getNom_produit() + "' a un stock inferieur a 5.");
+            }
         }
 
         cid.setCellValueFactory(new PropertyValueFactory<Produit, Integer>("id"));
@@ -213,6 +219,16 @@ public class ProduitController implements Initializable {
 
         tableFx.setItems(list);
     }
+
+
+    private void showAlertProduit(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Stock Faible");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     @FXML
     void onSearch(KeyEvent event) {

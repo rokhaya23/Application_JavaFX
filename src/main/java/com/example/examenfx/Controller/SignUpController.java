@@ -85,12 +85,15 @@ public class SignUpController implements Initializable {
         // Enregistrer l'utilisateur dans la base de données
         boolean isUserSaved = userRepository.saveUser(newUser);
 
-        // Si l'utilisateur est enregistré avec succès, afficher un message de succès, sinon afficher une alerte
+        // l'utilisateur est enregistré avec succès
         if (isUserSaved) {
             System.out.println("Inscription réussie!");
 
-            Parent mainPage = FXMLLoader.load(getClass().getResource("/com/example/examenfx/principal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/examenfx/principal.fxml"));
+            Parent mainPage = loader.load();
 
+            PrincipalController principalController = loader.getController();
+            principalController.setLogin(login);
             // Créer une nouvelle scène
             Scene scene = new Scene(mainPage);
 

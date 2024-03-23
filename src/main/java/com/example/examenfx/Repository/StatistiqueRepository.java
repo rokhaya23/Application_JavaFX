@@ -29,7 +29,7 @@ public class StatistiqueRepository {
             try (ResultSet resultSet = statement.executeQuery()) {
                 // Traitez les résultats et stockez-les dans productCountByCategory
                 while (resultSet.next()) {
-                    String categoryName = resultSet.getString("libelle"); // Correction de la colonne de nom de catégorie
+                    String categoryName = resultSet.getString("libelle");
                     int productCount = resultSet.getInt("product_count");
                     productCountByCategory.put(categoryName, productCount);
                 }
@@ -46,13 +46,13 @@ public class StatistiqueRepository {
 
         String query = "SELECT MONTH(date) AS month, COUNT(*) AS product_count " +
                 "FROM produit " +
-                "WHERE YEAR(date) = ? " +  // Utilisez le paramètre pour filtrer par année
+                "WHERE YEAR(date) = ? " +
                 "GROUP BY MONTH(date)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, year);  // Définissez la valeur du paramètre
+            statement.setInt(1, year);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    int mois = resultSet.getInt("month");  // Utilisez le nom correct de la colonne
+                    int mois = resultSet.getInt("month");
                     int nombreProduits = resultSet.getInt("product_count");
                     String nomMois = getNomMois(mois);
                     productCountByMonth.put(nomMois, nombreProduits);
